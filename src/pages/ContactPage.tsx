@@ -26,7 +26,7 @@ const ContactPage = (props: Props) => {
         <div className='sm:block hidden row-span-6 lg:row-span-3 w-full h-full row-start-1 lg:row-end-4  col-start-1 lg:col-end-4 lg:col-span-3 col-span-4'>
           <img
             className='object-cover  w-full h-full'
-            src='public/assets/contact/desktop/image-hero.jpg'
+            src='/assets/contact/desktop/image-hero.jpg'
             alt=''
           />
         </div>
