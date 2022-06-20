@@ -10,8 +10,8 @@ const Navbar = (props: Props) => {
 
   const menuItems = [
     { link: '/our-work', text: 'Portfolio' },
-    { link: '/get-in-touch', text: 'Contact' },
     { link: '/about-us', text: 'About Us' },
+    { link: '/get-in-touch', text: 'Contact' },
   ];
 
   const toggleMenu = (): void => setMenuOpen((curState) => !curState);

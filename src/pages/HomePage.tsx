@@ -183,7 +183,13 @@ const HomePage = (props: Props) => {
                 src={item.image}
                 className='w-full h-full z-[2] r absolute top-0 left-0 scale-[1.05] translate-1/2 object-cover  opacity-50'
               />
-              <div className='flex lg:flex-col justify-between items-center lg:items-start lg:justify-start w-full relative z-10 gap-4'>
+              <div className='flex lg:flex-col justify-between items-center lg:items-start lg:justify-start w-full  z-10 gap-4'>
+                <h6
+                  role='presentation'
+                  className='absolute text-[18rem] hidden lg:block text-slate-200/30 top-1/2 left-1/2 z-10 translate-x-[-50%] translate-y-[-50%] pointer-events-none'
+                >
+                  0{i + 1}
+                </h6>
                 <h4 className='text-2xl sm:text-4xl'>{item.title}</h4>
                 <div className='text-xl md:text-4x font-light flex items-center gap-1 flex-wrap'>
                   <span>
