@@ -91,6 +91,7 @@ const HomePage = (props: Props) => {
         <ul className='z-[3] absolute flex gap-0 translate-y-[-30%]  lg:translate-y-[-90%] xl:translate-x-[-80px]'>
           {sliderContent.map((_, i) => (
             <li
+              key={i}
               role='button'
               id={`${i}`}
               onClick={toggleActiveSlide}
@@ -174,6 +175,7 @@ const HomePage = (props: Props) => {
         <div className='flex flex-col gap-4 lg:flex-row '>
           {featuredContent.map((item, i) => (
             <Link
+              key={i}
               to={item?.link || '/our-work'}
               className='flex-1 relative overflow-hidden bg-slate-800 hover:bg-slate-600 text-white py-10 px-4 lg:px-10 h-[300px] lg:h-[500px] flex flex-col items-start justify-end'
             >
@@ -183,15 +185,12 @@ const HomePage = (props: Props) => {
               />
               <div className='flex lg:flex-col justify-between items-center lg:items-start lg:justify-start w-full relative z-10 gap-4'>
                 <h4 className='text-2xl sm:text-4xl'>{item.title}</h4>
-                <Link
-                  className='text-xl md:text-4x font-light flex items-center gap-1 flex-wrap'
-                  to={item?.link || '/our-work'}
-                >
+                <div className='text-xl md:text-4x font-light flex items-center gap-1 flex-wrap'>
                   <span>
                     {item.link ? 'View project' : 'View all projects'}
                   </span>
                   <IoArrowForward />
-                </Link>
+                </div>
               </div>
             </Link>
           ))}

@@ -26,7 +26,7 @@ const App = () => {
                       description={route?.description}
                     />
                     <div
-                      className='absolute text-2xl xl:text-3xl uppercase  text-slate-300 left-0 translate-x-[-250%] xl:translate-x-[-100px] translate-y-[-120px] z-10 before:border-[0.5px]  before:h-[150px] flex items-center gap-6  before:border-slate-200 before:bg-slate-200 before:block font-light'
+                      className='absolute text-2xl xl:text-3xl uppercase  text-slate-300 left-0 translate-x-[-250%] xl:translate-x-[-100px] translate-y-[-120px] z-10 before:border-[0.5px]  before:h-[150px] flex items-center gap-6  before:border-slate-200 tracking-widest  before:bg-slate-200 before:block font-light'
                       style={{ writingMode: 'vertical-lr' }}
                     >
                       <span style={{ whiteSpace: 'nowrap' }}>{route.name}</span>

@@ -18,7 +18,7 @@ const Footer = (props: Props) => {
         </h3>
         <ul className='flex items-center'>
           {menuItems.map((item, i) => (
-            <li>
+            <li key={i}>
               <Link
                 className={`p-3 py-1 block md:px-5 font-light text-slate-500 hover:text-slate-700 text-sm lg:text-xl`}
                 to={item.link}

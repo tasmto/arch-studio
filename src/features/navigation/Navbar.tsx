@@ -17,7 +17,7 @@ const Navbar = (props: Props) => {
   const toggleMenu = (): void => setMenuOpen((curState) => !curState);
 
   return (
-    <header className='z-100 py-3 md:py-5 lg:py-8 lg:pb-12 flex gap-8  items-center justify-between sm:justify-start relative md:overflow-hidden'>
+    <header className='z-100 py-3 md:py-5 lg:py-8 xl:py-12 flex gap-8  items-center justify-between sm:justify-start relative md:overflow-hidden'>
       <Link to='/' className=''>
         <h1 className='flex-col'>
           <img src='/assets/logo.svg' className='max-w-[none]' />
@@ -25,7 +25,7 @@ const Navbar = (props: Props) => {
       </Link>
       <nav>
         <ul
-          className={`gap-1 sm:gap-0 flex-col z-30 sm:flex-row px-4 pl-5 sm:px-0 py-2 sm:py-0 absolute top-[90%] right-0 min-w-[70vw]  sm:static flex bg-slate-300 sm:bg-transparent scale-x-0 origin-right duration-500   ${
+          className={`gap-1 sm:gap-0 flex-col z-30 sm:flex-row px-4 pl-6 sm:px-0 py-2 sm:py-0 fixed top-[15%] right-0 min-w-[70vw]  sm:static flex bg-slate-300 sm:bg-transparent scale-x-0 origin-right duration-500   ${
             menuOpen && 'scale-x-100 block'
           } transition-transform sm:scale-x-100 sm:flex`}
           role='navigation'
@@ -36,15 +36,15 @@ const Navbar = (props: Props) => {
           >
             <button
               onClick={toggleMenu}
-              className='sm:hidden flex w-100 ml-[auto] gap-1 justify-end items-center self-end text-slate-400 hover:text-slate-500 text-xs font-light'
+              className='sm:hidden flex w-100 ml-[auto] pr-1 gap-1 justify-end items-center self-end text-slate-400 hover:text-slate-500 text-xs font-light tracking-widest uppercase'
             >
-              <span style={{ writingMode: 'vertical-lr' }}>Close the Menu</span>
+              <span style={{ writingMode: 'vertical-lr' }}>Close Menu</span>
             </button>
           </li>
           {menuItems.map((item, i) => (
-            <li>
+            <li key={i}>
               <Link
-                className={`p-3 py-1 block md:px-5 font-light text-slate-700 hover:text-slate-600 hover:bg-slate-400 opacity-0 translate-x-5 transition-all duration-[${
+                className={`p-3 py-1 block md:px-5 font-light text-slate-700 tracking-wider hover:text-slate-600 hover:bg-slate-400 opacity-0 translate-x-5 transition-all duration-[${
                   i * 2 + 1000
                 }00] ${
                   menuOpen && `opacity-100 translate-x-0 `
@@ -79,7 +79,7 @@ const Navbar = (props: Props) => {
       {menuOpen && (
         <div
           onClick={toggleMenu}
-          className='fixed w-screen h-screen z-20 top-0 left-0 bg-slate-900/80 backdrop-blur-sm sm:hidden'
+          className='fixed w-screen h-screen z-20 top-0 left-0 bg-slate-900/80 backdrop-blur-sm sm:hidden cursor-pointer'
         ></div>
       )}
     </header>
