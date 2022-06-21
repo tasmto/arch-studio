@@ -1,5 +1,6 @@
 import React from 'react';
 import { IoArrowForward } from 'react-icons/io5';
+import Map from '../features/map/Map';
 
 type Props = {};
 
@@ -15,6 +16,31 @@ const ContactPage = (props: Props) => {
   ) => {
     setFormData({ ...formData, [e.target.id]: e.target.value });
   };
+  const officeLocations: Array<{
+    location: [number, number];
+    name: string;
+    mail: string;
+    address: string;
+    phone: string;
+  }> = [
+    {
+      location: [-33.9286976, 18.411518715],
+      name: '1892 Chenoweth Drive TN',
+      mail: 'archone@mail.com',
+      address: '1892 Chenoweth Drive TN',
+      phone: '+1 (904) 987-1234',
+    },
+    {
+      location: [-33.9323948, 18.490244],
+      name: 'Office 2',
+      mail: 'archono@mail.com',
+      address: '3399 Wines Lane TX',
+      phone: '832-123-4321',
+    },
+  ];
+  const [mapFocus, setMapFocus] = React.useState<[number, number]>(
+    officeLocations.at(1)?.location || [0, 0]
+  );
 
   const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -54,54 +80,43 @@ const ContactPage = (props: Props) => {
         <h2 className='col-span-2  text-3xl sm:text-4xl md:text-5xl font-semibold'>
           Contact Details
         </h2>
-        <article className=' pr-4 md:col-span-3 col-span-1 flex flex-col gap-4 font-light text-slate-400 md:text-lg'>
-          <h3 className='text-xl  text-slate-600 font-semibold'>Main Office</h3>
-          <div className='flex flex-col gap-2'>
-            <p className='flex justify-between gap-2'>
-              <span>Mail:</span>
-              <span>archone@mail.com</span>
-            </p>
-            <p className='flex justify-between gap-2'>
-              <span>Address:</span>
-              <span>1892 Chenoweth Drive TN</span>
-            </p>
-            <p className='flex justify-between gap-2'>
-              <span>Phone:</span>
-              <span>123-456-3451</span>
-            </p>
-          </div>
-          <button className='mt-2 p-0 font-semibold  flex self-start items-center gap-3 text-lg text-slate-900 hover:text-slate-700 '>
-            <span>View on map</span>
-            <IoArrowForward />
-          </button>
-        </article>
-        <article className='md:col-span-3 col-span-1 flex flex-col gap-4 font-light text-slate-400 md:text-lg'>
-          <h3 className='text-xl  text-slate-600 font-semibold'>Office II</h3>
-          <div className='flex flex-col gap-2'>
-            <p className='flex justify-between gap-2'>
-              <span>Mail:</span>
-              <span>archono@mail.com</span>
-            </p>
-            <p className='flex justify-between gap-2'>
-              <span>Address:</span>
-              <span>3399 Wines Lane TX</span>
-            </p>
-            <p className='flex justify-between gap-2'>
-              <span>Phone:</span>
-              <span>832-123-4321</span>
-            </p>
-          </div>
-          <button className='mt-2 p-0 font-semibold  flex self-start items-center gap-3 text-lg text-slate-900 hover:text-slate-700 '>
-            <span>View on map</span>
-            <IoArrowForward />
-          </button>
-        </article>
+        {officeLocations.map((office, i) => (
+          <article
+            key={`${i}-${office.name}`}
+            className=' pr-4 md:col-span-3 col-span-1 flex flex-col gap-4 font-light text-slate-400 md:text-lg'
+          >
+            <h3 className='text-xl  text-slate-600 font-semibold'>
+              Main Office
+            </h3>
+            <div className='flex flex-col gap-4'>
+              <p className='flex flex-wrap justify-between gap-1'>
+                <span>Mail:</span>
+                <span>{office.mail}</span>
+              </p>
+              <p className='flex flex-wrap justify-between gap-1'>
+                <span>Address:</span>
+                <span>{office.address}</span>
+              </p>
+              <p className='flex flex-wrap justify-between gap-1'>
+                <span>Phone:</span>
+                <span>{office.phone}</span>
+              </p>
+            </div>
+            <button
+              className='mt-2 p-0 font-semibold  flex self-start items-center gap-3 text-lg text-slate-900 hover:text-slate-700'
+              onClick={() => setMapFocus(office.location)}
+            >
+              <span>View on map</span>
+              <IoArrowForward />
+            </button>
+          </article>
+        ))}
       </section>
 
       <section>
-        <h1 className='text-4xl text-slate-600 text-center py-20 px-10 border border-dashed border-slate-400'>
-          Map goes here
-        </h1>
+        <div className='h-[300px] sm:h-[400] xl:h-[500px] overflow-hidden w-full block p-4 border border-dashed border-slate-400'>
+          <Map locations={officeLocations} focus={mapFocus} />
+        </div>
       </section>
 
       <section className='grid grid-cols-2 md:grid-cols-8 gap-8 md:gap-12'>

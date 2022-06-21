@@ -17,7 +17,7 @@ const Navbar = (props: Props) => {
   const toggleMenu = (): void => setMenuOpen((curState) => !curState);
 
   return (
-    <header className='z-100 py-3 md:py-5 lg:py-8 xl:py-12 flex gap-8  items-center justify-between sm:justify-start relative md:overflow-hidden'>
+    <header className='z-[100000] py-3 md:py-5 lg:py-8 xl:py-12 flex gap-8  items-center justify-between sm:justify-start relative md:overflow-hidden'>
       <Link to='/' className=''>
         <h1 className='flex-col'>
           <img src='/assets/logo.svg' className='max-w-[none]' />

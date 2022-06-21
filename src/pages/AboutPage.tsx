@@ -100,8 +100,8 @@ const AboutPage = (props: Props) => {
           The Leaders
         </h2>
         <div className='col-span-2 grid grid-cols-2 gap-6 md:gap-12'>
-          {teamMembers.map((member) => (
-            <article className='flex flex-col gap-0 font-light'>
+          {teamMembers.map((member, i) => (
+            <article key={i} className='flex flex-col gap-0 font-light'>
               <img
                 src={member.image}
                 alt={`A picture of ${member.name}`}

@@ -186,7 +186,7 @@ const HomePage = (props: Props) => {
               <div className='flex lg:flex-col justify-between items-center lg:items-start lg:justify-start w-full  z-10 gap-4'>
                 <h6
                   role='presentation'
-                  className='absolute text-[18rem] hidden lg:block text-slate-200/30 top-1/2 left-1/2 z-10 translate-x-[-50%] translate-y-[-50%] pointer-events-none'
+                  className='absolute font-bold text-[14rem] hidden lg:block text-slate-200/30 top-1/2 right-0 z-10  translate-y-[-50%] pointer-events-none'
                 >
                   0{i + 1}
                 </h6>

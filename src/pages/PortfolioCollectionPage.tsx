@@ -78,6 +78,7 @@ const PortfolioCollectionPage = (props: Props) => {
     <div className=' flex flex-col gap-4 md:grid md:grid-cols-2 lg:grid-cols-3 '>
       {portfolioContent.map((item, i) => (
         <Link
+          key={i}
           to={item?.link || ''}
           className='flex-1 w-full  relative overflow-hidden bg-slate-800 hover:bg-slate-600 text-white py-10 px-4 lg:px-10 h-[300px] lg:h-[500px] xl:h-[600px] flex flex-col items-start justify-end '
         >
