@@ -1,6 +1,6 @@
-import React from 'react';
-import { IoArrowForward } from 'react-icons/io5';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
+import Image from 'next/image';
+import Indicator from '../components/routeIndicator/Indicator';
 
 type Props = {};
 
@@ -76,22 +76,23 @@ const PortfolioCollectionPage = (props: Props) => {
   ];
   return (
     <div className=' flex flex-col gap-4 md:grid md:grid-cols-2 lg:grid-cols-3 '>
+      <Indicator name='Portfolio' />
       {portfolioContent.map((item, i) => (
-        <Link
-          key={i}
-          to={item?.link || ''}
-          className='flex-1 w-full  relative overflow-hidden bg-slate-800 hover:bg-slate-600 text-white py-10 px-4 lg:px-10 h-[300px] lg:h-[500px] xl:h-[600px] flex flex-col items-start justify-end '
-        >
-          <img
-            src={item.image}
-            className='w-full h-full z-[2] r absolute top-0 left-0 scale-[1.05] translate-1/2 object-cover  opacity-50'
-          />
-          <div className='flex lg:flex-col justify-between items-center lg:items-start lg:justify-start w-full relative z-10 gap-2'>
-            <h4 className='text-2xl sm:text-4xl'>{item.title}</h4>
-            <p className='text-xl md:text-4x font-light flex items-center gap-1 flex-wrap'>
-              <span>{item.date}</span>
-            </p>
-          </div>
+        <Link key={i} href={item?.link || ''}>
+          <a className='flex-1 w-full  relative overflow-hidden bg-slate-800 hover:bg-slate-600 text-white py-10 px-4 lg:px-10 h-[300px] lg:h-[500px] xl:h-[600px] flex flex-col items-start justify-end '>
+            <Image
+              src={item.image}
+              className='w-full h-full z-[2] r absolute top-0 left-0 scale-[1.05] translate-1/2 object-cover  opacity-50'
+              layout='fill'
+              alt=''
+            />
+            <div className='flex lg:flex-col justify-between items-center lg:items-start lg:justify-start w-full relative z-10 gap-2'>
+              <h4 className='text-2xl sm:text-4xl'>{item.title}</h4>
+              <p className='text-xl md:text-4x font-light flex items-center gap-1 flex-wrap'>
+                <span>{item.date}</span>
+              </p>
+            </div>
+          </a>
         </Link>
       ))}
     </div>

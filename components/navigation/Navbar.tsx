@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
-import { Link, useLocation, matchRoutes } from 'react-router-dom';
+
 import { IoMenu, IoClose } from 'react-icons/io5';
+import Link from 'next/link';
 
 type Props = {};
 
 const Navbar = (props: Props) => {
-  const location = useLocation();
+  // const location = useLocation();
+  const location = { pathname: '' };
   const [menuOpen, setMenuOpen] = useState(false);
 
   const menuItems = [
@@ -18,10 +20,12 @@ const Navbar = (props: Props) => {
 
   return (
     <header className='z-[100000] py-3 md:py-5 lg:py-8 xl:py-12 flex gap-8  items-center justify-between sm:justify-start relative md:overflow-hidden'>
-      <Link to='/' className=''>
-        <h1 className='flex-col'>
-          <img src='/assets/logo.svg' className='max-w-[none]' />
-        </h1>
+      <Link href='/' className=''>
+        <a>
+          <h1 className='flex-col'>
+            <img src='/assets/logo.svg' className='max-w-[none]' alt='' />
+          </h1>
+        </a>
       </Link>
       <nav>
         <ul
@@ -43,18 +47,19 @@ const Navbar = (props: Props) => {
           </li>
           {menuItems.map((item, i) => (
             <li key={i}>
-              <Link
-                className={`p-3 py-1 block md:px-5 font-light text-slate-700 tracking-wider hover:text-slate-600 hover:bg-slate-400 opacity-0 translate-x-5 transition-all duration-[${
-                  i * 2 + 1000
-                }00] ${
-                  menuOpen && `opacity-100 translate-x-0 `
-                } sm:translate-x-0 sm:opacity-100 sm:hover:bg-transparent sm:text-slate-500 sm:hover:text-slate-700 text-sm lg:text-xl ${
-                  location.pathname === item.link && ' font-bold'
-                }`}
-                to={item.link}
-                onClick={() => setMenuOpen(false)}
-              >
-                {item.text}
+              <Link href={item.link}>
+                <a
+                  onClick={() => setMenuOpen(false)}
+                  className={`p-3 py-1 block md:px-5 font-light text-slate-700 tracking-wider hover:text-slate-600 hover:bg-slate-400 opacity-0 translate-x-5 transition-all duration-[${
+                    i * 2 + 1000
+                  }00] ${
+                    menuOpen && `opacity-100 translate-x-0 `
+                  } sm:translate-x-0 sm:opacity-100 sm:hover:bg-transparent sm:text-slate-500 sm:hover:text-slate-700 text-sm lg:text-xl ${
+                    location.pathname === item.link && ' font-bold'
+                  }`}
+                >
+                  {item.text}
+                </a>
               </Link>
             </li>
           ))}

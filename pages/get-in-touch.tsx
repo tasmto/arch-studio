@@ -1,6 +1,12 @@
 import React from 'react';
+import dynamic from 'next/dynamic';
 import { IoArrowForward } from 'react-icons/io5';
-import Map from '../features/map/Map';
+
+import Indicator from '../components/routeIndicator/Indicator';
+
+const Map = dynamic(() => import('../components/map/Map'), {
+  ssr: false,
+});
 
 type Props = {};
 
@@ -48,6 +54,7 @@ const ContactPage = (props: Props) => {
   };
   return (
     <>
+      <Indicator name='Contact' />
       <section className='mt-10 sm:mt-4 sm:grid grid-cols-6 grid-rows-6 lg:grid-rows-3 max-h-[600px]'>
         <div className='sm:block hidden row-span-6 lg:row-span-3 w-full h-full row-start-1 lg:row-end-4  col-start-1 lg:col-end-4 lg:col-span-3 col-span-4'>
           <img
@@ -83,7 +90,7 @@ const ContactPage = (props: Props) => {
         {officeLocations.map((office, i) => (
           <article
             key={`${i}-${office.name}`}
-            className=' pr-4 md:col-span-3 col-span-1 flex flex-col gap-4 font-light text-slate-400 md:text-lg'
+            className='pr-4 md:col-span-3 col-span-1 flex flex-col gap-4 font-light text-slate-400 md:text-lg'
           >
             <h3 className='text-xl  text-slate-600 font-semibold'>
               Main Office
