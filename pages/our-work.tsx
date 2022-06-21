@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import Indicator from '../components/routeIndicator/Indicator';
+import Head from 'next/head';
 
 type Props = {};
 
@@ -76,6 +77,9 @@ const PortfolioCollectionPage = (props: Props) => {
   ];
   return (
     <div className=' flex flex-col gap-4 md:grid md:grid-cols-2 lg:grid-cols-3 '>
+      <Head>
+        <title>Arch | Portfolio</title>
+      </Head>
       <Indicator name='Portfolio' />
       {portfolioContent.map((item, i) => (
         <Link key={i} href={item?.link || ''}>

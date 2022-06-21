@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import React from 'react';
 import { IoLogoTwitter, IoLogoLinkedin } from 'react-icons/io5';
 import Indicator from '../components/routeIndicator/Indicator';
@@ -38,6 +39,9 @@ const AboutPage = (props: Props) => {
 
   return (
     <>
+      <Head>
+        <title>Arch | About</title>
+      </Head>
       <Indicator name='About' />
       <section className='mt-10 sm:mt-4 sm:grid grid-cols-6 grid-rows-6 lg:grid-rows-3 max-h-[600px]'>
         <div className='sm:block hidden row-span-6 lg:row-span-3 w-full h-full row-start-1 lg:row-end-4  col-start-1 lg:col-end-4 lg:col-span-3 col-span-4'>

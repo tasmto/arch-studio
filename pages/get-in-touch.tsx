@@ -3,6 +3,7 @@ import dynamic from 'next/dynamic';
 import { IoArrowForward } from 'react-icons/io5';
 
 import Indicator from '../components/routeIndicator/Indicator';
+import Head from 'next/head';
 
 const Map = dynamic(() => import('../components/map/Map'), {
   ssr: false,
@@ -54,6 +55,9 @@ const ContactPage = (props: Props) => {
   };
   return (
     <>
+      <Head>
+        <title>Arch | Contact</title>
+      </Head>
       <Indicator name='Contact' />
       <section className='mt-10 sm:mt-4 sm:grid grid-cols-6 grid-rows-6 lg:grid-rows-3 max-h-[600px]'>
         <div className='sm:block hidden row-span-6 lg:row-span-3 w-full h-full row-start-1 lg:row-end-4  col-start-1 lg:col-end-4 lg:col-span-3 col-span-4'>
